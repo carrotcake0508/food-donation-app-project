@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" class="mt-4">
+                <!-- Title -->
+                <div class="text-center mb-4">
+                    <h2 style="background-color: #FFE4E1; display: inline-block; padding: 10px 30px; 
+                              border-radius: 25px; font-family: 'Comic Neue', cursive;">
+                        Food Request Form
+                    </h2>
+                </div>
+
+                <!-- Food Input -->
+                <div class="mb-4">
+                    <div style="background-color: #FFE4E1; padding: 15px; border-radius: 25px;">
+                        <label style="font-family: 'Comic Neue', cursive;">Food:</label>
+                        <input type="text" class="form-control border-0 bg-transparent" 
+                               name="food" required 
+                               style="background-color: transparent !important;">
+                    </div>
+                </div>
+
+                <!-- Food Quantity Input -->
+                <div class="mb-4">
+                    <div style="background-color: #FFE4E1; padding: 15px; border-radius: 25px;">
+                        <label style="font-family: 'Comic Neue', cursive;">Food Quantity:</label>
+                        <input type="text" class="form-control border-0 bg-transparent" 
+                               name="food_quantity" required
+                               style="background-color: transparent !important;">
+                    </div>
+                </div>
+
+                <!-- By Input -->
+                <div class="mb-4">
+                    <div style="background-color: #FFE4E1; padding: 15px; border-radius: 25px;">
+                        <label style="font-family: 'Comic Neue', cursive;">By:</label>
+                        <input type="text" class="form-control border-0 bg-transparent" 
+                               name="by" required
+                               style="background-color: transparent !important;">
+                    </div>
+                </div>
+
+                <!-- Food Bank Input -->
+                <div class="mb-4">
+                    <div style="background-color: #FFE4E1; padding: 15px; border-radius: 25px;">
+                        <label style="font-family: 'Comic Neue', cursive;">Food Bank:</label>
+                        <input type="text" class="form-control border-0 bg-transparent" 
+                               name="food_bank" required
+                               style="background-color: transparent !important;">
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn" 
+                            style="background-color: #FFE4E1; border-radius: 25px; 
+                                   padding: 8px 40px; font-family: 'Comic Neue', cursive;">
+                        Next
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #FFF5F5;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    .form-control {
+        border: none !important;
+    }
+</style>
+{% endblock %}

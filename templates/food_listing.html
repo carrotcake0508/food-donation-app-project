@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Available Food Column -->
+        <div class="col-md-4">
+            <div class="card h-100" style="background-color: #FFE4E1; border-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4" style="font-family: 'Comic Neue', cursive;">Available Food From Donors</h5>
+                    
+                    <!-- Search Box -->
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text" style="background-color: white; border: none;">🔍</span>
+                            <input type="text" class="form-control" placeholder="Search" style="border: none;">
+                        </div>
+                    </div>
+
+                    <!-- Food Items -->
+                    <div class="food-items" style="max-height: 500px; overflow-y: auto;">
+                        {% for item in available_food %}
+                        <div class="food-item mb-3" style="background-color: white; border-radius: 10px; padding: 10px;">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ url_for('static', filename='images/' + item.image) }}" 
+                                     alt="{{ item.name }}" 
+                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                                <div class="ms-3">
+                                    <h6 class="mb-0" style="font-family: 'Comic Neue', cursive;">{{ item.name }}</h6>
+                                    <small>{{ item.quantity }}</small>
+                                </div>
+                                <div class="ms-auto">
+                                    <input type="checkbox" class="form-check-input">
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Currently Lacking Column -->
+        <div class="col-md-4">
+            <div class="card h-100" style="background-color: #FFE4E1; border-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4" style="font-family: 'Comic Neue', cursive;">Currently Lacking</h5>
+                    <div class="lacking-items">
+                        {% for item in lacking_items %}
+                        <div class="lacking-item mb-3" style="display: flex; align-items: center;">
+                            <span style="margin-right: 10px;">🗑️</span>
+                            <span style="font-family: 'Comic Neue', cursive;">{{ item }}</span>
+                        </div>
+                        {% endfor %}
+                        <div class="text-center mt-4">
+                            <button class="btn btn-outline-secondary rounded-circle">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Column -->
+        <div class="col-md-4">
+            <div class="card h-100" style="background-color: #FFE4E1; border-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4" style="font-family: 'Comic Neue', cursive;">Inventory</h5>
+                    {% for item in inventory %}
+                    <div class="inventory-item mb-3" style="background-color: white; border-radius: 10px; padding: 10px;">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ url_for('static', filename='images/' + item.image) }}" 
+                                 alt="{{ item.name }}" 
+                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                            <div class="ms-3">
+                                <h6 class="mb-0" style="font-family: 'Comic Neue', cursive;">{{ item.name }}</h6>
+                                <small>{{ item.quantity }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Submit Request Button -->
+<div class="row mt-4">
+    <div class="col-12 text-end">
+        <a href="{{ url_for('food_request_form') }}" class="btn" 
+           style="background-color: #FFE4E1; border-radius: 20px; padding: 8px 25px;">
+            Submit Request
+        </a>
+    </div>
+</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .food-item, .inventory-item {
+        transition: transform 0.2s;
+    }
+    .food-item:hover, .inventory-item:hover {
+        transform: scale(1.02);
+    }
+</style>
+{% endblock %}
