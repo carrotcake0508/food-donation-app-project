@@ -1,0 +1,23 @@
+html {
+    background-image: url('pass-the-plate-logo.png');
+    background-size: cover;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border-color: #800080;
+    color: #800080;
+    text-align: center;
+}
+
+th, td {
+    padding: 5px
+}
+
+.error {
+    color: #800000;
+}
+
+h1, h2 {
+    color: #008080;
+}
